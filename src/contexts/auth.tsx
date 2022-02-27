@@ -8,6 +8,8 @@ import React, {
 } from "react";
 import { useNavigate } from "react-router-dom";
 
+import api from "../services/api";
+
 interface AuxProps {
   children: ReactChild | ReactChildren;
 }
@@ -56,13 +58,12 @@ function AuthProvider({ children }: AuxProps) {
     setLoadingData(false);
   }, []);
 
-  const login = () => {
-    const response = { token: "This is my JWT" }; // Fetch to api
-
-    localStorage.setItem("react-login.token", response.token);
-
-    setUser(response);
-    navigate("/");
+  const login = ({ email, password }: ILogin) => {
+    api.post("/session", { email, password }).then(({ data }) => {
+      localStorage.setItem("react-login.token", data.token);
+      setUser(data.token);
+      navigate("/");
+    }); // Fetch to api
   };
 
   const logout = () => {
