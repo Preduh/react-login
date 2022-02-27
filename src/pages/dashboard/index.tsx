@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
 
-function HomePage() {
+function Dashboard() {
   const { logout } = useContext(AuthContext);
 
   const handleLogout = () => {
@@ -10,7 +10,7 @@ function HomePage() {
 
   return (
     <>
-      <h1>Home Page</h1>
+      <h1>Dashboard</h1>
       <button type="button" className="logout" onClick={handleLogout}>
         Logout
       </button>
@@ -18,4 +18,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Dashboard;

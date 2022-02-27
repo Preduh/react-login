@@ -3,8 +3,8 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/auth";
 import "./styles.scss";
 
-function LoginPage() {
-  const { authenticated, login } = useContext(AuthContext);
+function Signup() {
+  const { authenticated, signup } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ function LoginPage() {
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
 
-    login({ email, password });
+    signup({ email, password });
   };
 
   return (
@@ -48,4 +48,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Signup;
