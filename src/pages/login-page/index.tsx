@@ -17,7 +17,6 @@ function LoginPage() {
 
   return (
     <div className="login">
-      <p>{String(authenticated)}</p>
       <h1 className="title">Login system</h1>
       <form className="form" onSubmit={handleSubmit}>
         <div className="field">
@@ -43,6 +42,7 @@ function LoginPage() {
         <div className="actions">
           <button type="submit">Login</button>
         </div>
+        <p>{String(authenticated)}</p>
       </form>
     </div>
   );
