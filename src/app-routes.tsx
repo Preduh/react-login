@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Dashboard from "./pages/dashboard";
-import Signup from "./pages/signup";
+import SignIn from "./pages/signin";
 import { AuthContext, AuthProvider } from "./contexts/auth";
 
 interface AuxProps {
@@ -21,7 +21,7 @@ function Private({ children }: AuxProps) {
     return <div className="loading">Carregando...</div>;
   }
 
-  return !authenticated ? <Navigate to="/signup" /> : (children as JSX.Element);
+  return !authenticated ? <Navigate to="/signin" /> : (children as JSX.Element);
 }
 
 function AppRoutes() {
@@ -37,7 +37,7 @@ function AppRoutes() {
               </Private>
             }
           />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
       </AuthProvider>
     </Router>

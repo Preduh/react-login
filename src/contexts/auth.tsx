@@ -14,7 +14,7 @@ interface AuxProps {
   children: ReactChild | ReactChildren;
 }
 
-interface ISignup {
+interface ISignin {
   email: string;
   password: string;
 }
@@ -26,7 +26,7 @@ interface IUser {
 interface IAuthContext {
   authenticated: boolean;
   user: IUser | null;
-  signup: ({ email, password }: ISignup) => void;
+  signin: ({ email, password }: ISignin) => void;
   logout: () => void;
   loadingData: boolean;
 }
@@ -36,7 +36,7 @@ const DEFAULT_CONTEXT_VALUE = {
   user: {
     token: "",
   },
-  signup: () => null,
+  signin: () => null,
   logout: () => null,
   loadingData: true,
 };
@@ -58,7 +58,7 @@ function AuthProvider({ children }: AuxProps) {
     setLoadingData(false);
   }, []);
 
-  const signup = async ({ email, password }: ISignup) => {
+  const signin = async ({ email, password }: ISignin) => {
     const { data } = await api.post("/session", { email, password }); // Fetch to api
 
     localStorage.setItem("react-login.token", data.token);
@@ -70,18 +70,18 @@ function AuthProvider({ children }: AuxProps) {
     localStorage.removeItem("react-login.token");
 
     setUser(null);
-    navigate("/signup");
+    navigate("/signin");
   };
 
   const authProviderValue = useMemo(
     () => ({
       authenticated: !!user,
       user,
-      signup,
+      signin,
       logout,
       loadingData,
     }),
-    [!!user, user, signup, logout, loadingData],
+    [!!user, user, signin, logout, loadingData],
   );
 
   return (

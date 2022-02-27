@@ -1,0 +1,82 @@
+@use "../../styles/global.scss" as variables;
+
+.container {
+  display: flex;
+  height: 100vh;
+
+  .side-image {
+    height: 100%;
+    width: 60vw;
+    background-color: variables.$primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .leaf-image {
+      width: 25vw;
+      height: 25vw;
+      border-radius: 50%;
+    }
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 100%;
+    background-color: variables.$secundary-color;
+
+    .title {
+      color: variables.$text-color;
+      margin-bottom: 5%;
+    }
+
+    .form {
+      width: 90%;
+      border-radius: 8px;
+
+      .field {
+        padding: 5% 0%;
+
+        label {
+          display: block;
+          color: variables.$text-color;
+          font-size: 1.5vw;
+          font-weight: 500;
+        }
+
+        input {
+          border: none;
+          border-bottom: 1px solid variables.$text-color;
+          color: variables.$text-color;
+          width: 100%;
+          background-color: transparent;
+          outline: none;
+          font-size: 1.5vw;
+          margin-top: 1%;
+          padding: 1%;
+        }
+      }
+
+      .actions {
+        width: 100%;
+        padding: 2% 0%;
+        margin-top: 5%;
+
+        button {
+          width: 100%;
+          border: none;
+          background-color: variables.$text-color;
+          border-radius: 8px;
+          color: #fff;
+          font-size: 2vw;
+          font-weight: 500;
+          padding: 1.5% 0%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
